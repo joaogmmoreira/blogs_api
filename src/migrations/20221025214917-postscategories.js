@@ -1,11 +1,13 @@
+'use strict';
+
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('posts_categories', {
       post_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'blog_post',
+          model: 'blog_posts',
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -21,10 +23,11 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-    });
+    }, {
+      timestamps: false,
+     });    
   },
-
-  async up (queryInterface, _Sequelize) {
-    await queryInterface.dropTable('users', null, {});
-  },
+  down: async (queryInterface, _Sequelize) => {
+    await queryInterface.dropTable('posts_categories');
+  }
 };
