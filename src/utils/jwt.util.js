@@ -9,6 +9,17 @@ const createToken = (data) => {
   return token;
 };
 
+const validateToken = (token) => {
+  try {
+    const { data } = jwt.verify(token, process.env.JWT_SECRET);
+    return data;
+  } catch (_e) {
+    const e = new Error('Token inválido');
+    throw e;
+  }
+};
+
 module.exports = {
   createToken,
+  validateToken,
 };

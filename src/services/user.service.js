@@ -59,7 +59,6 @@ const validateBody = async (data) => {
   if (userEmail.dataValues.email === email) {
     return { type: 409, message: 'User already registered' };
   }
-  console.log('oi', displayName, email, password, image);
 
   await registerUser({ displayName, email, password, image });  
   const token = newToken(data);
