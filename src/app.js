@@ -1,8 +1,10 @@
 const express = require('express');
+const authRouter = require('./routes/login.router');
 
 const app = express();
 
 app.use(express.json());
+app.use('/login', authRouter);
 
 // ...
 
