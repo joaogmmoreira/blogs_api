@@ -76,7 +76,27 @@ const getAllUsers = async () => {
   return { type: null, message: result };
 };
 
+const findUser = async (id) => {
+  const result = await User.findOne({ where: { id } });
+
+  if (!result) {
+    return { type: 404, message: 'User does not exist' };
+  }
+
+  const user = {
+    id: result.id,
+    displayName: result.displayName,
+    email: result.email,
+    image: result.image,
+  };
+
+  // console.log(user);
+
+  return { type: null, message: user };
+};
+
 module.exports = {
   validateBody,
   getAllUsers,
+  findUser,
 };
