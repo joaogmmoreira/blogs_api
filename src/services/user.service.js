@@ -66,6 +66,17 @@ const validateBody = async (data) => {
   return { type: null, message: token };
 };
 
+const getAllUsers = async () => {
+  const result = await User.findAll({ attributes: { exclude: 'password' } });
+
+  if (!result) {
+    return { type: 404, message: 'Not found' };
+  }
+
+  return { type: null, message: result };
+};
+
 module.exports = {
   validateBody,
+  getAllUsers,
 };
