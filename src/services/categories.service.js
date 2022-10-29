@@ -7,15 +7,15 @@ const validateCategoryRegister = async (data) => {
     return { type: 400, message: '"name" is required' };
   }
 
+  console.log(Category);
   const result = await Category.create({ name });
-  // console.log(result);
 
   return { type: null, message: result };
 };
 
 const getAllCategories = async () => {
+  console.log(Category);
   const result = await Category.findAll();
-  // console.log(result);
 
   return { type: null, message: result };
 };

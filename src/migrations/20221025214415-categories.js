@@ -11,9 +11,13 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
     }, {
-      timesstamps: false,
+      tableName: 'categories',
+      timestamps: false,
+      underscored: true,
+      
     });    
   },
   down: async (queryInterface, _Sequelize) => {    
